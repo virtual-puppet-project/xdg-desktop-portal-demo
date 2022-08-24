@@ -25,6 +25,7 @@ func _ready() -> void:
 	$VSplitContainer/HBoxContainer/AbsPath.connect("pressed", self, "_abs_pressed")
 	$VSplitContainer/HBoxContainer/ReadLast.connect("pressed", self, "_read_last_pressed")
 	$VSplitContainer/HBoxContainer/Pwd.connect("pressed", self, "_pwd_pressed")
+	$VSplitContainer/HBoxContainer/GDNative.connect("pressed", self, "_gdnative_pressed")
 	abs_path_button.hint_tooltip = ABS_PATH
 
 #-----------------------------------------------------------------------------#
@@ -56,6 +57,13 @@ func _pwd_pressed() -> void:
 			continue
 		
 		output_control.text = i
+
+func _gdnative_pressed() -> void:
+	var xdg = preload("res://xdg_dialog.gdns").new()
+	
+	var path: String = xdg.execute()
+	
+	_read_file_to_output(path)
 
 #-----------------------------------------------------------------------------#
 # Private functions                                                           #

@@ -59,8 +59,14 @@ margin_right = 381.0
 margin_bottom = 24.0
 text = "PWD"
 
-[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+[node name="GDNative" type="Button" parent="VSplitContainer/HBoxContainer"]
 margin_left = 385.0
+margin_right = 458.0
+margin_bottom = 24.0
+text = "GDNative"
+
+[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+margin_left = 462.0
 margin_right = 1004.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

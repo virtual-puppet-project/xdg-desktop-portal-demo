@@ -1,0 +1,10 @@
+[general]
+
+load_once=true
+singleton=false
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+X11.64="res://lib/filepicker.so"
