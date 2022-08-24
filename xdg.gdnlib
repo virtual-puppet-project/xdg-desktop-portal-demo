@@ -7,4 +7,8 @@ reloadable=true
 
 [entry]
 
-X11.64="res://lib/filepicker.so"
+X11.64="res://lib/libfilepicker.so"
+
+[dependencies]
+
+X11.64=[  ]
