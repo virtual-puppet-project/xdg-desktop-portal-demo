@@ -47,8 +47,14 @@ margin_right = 236.0
 margin_bottom = 24.0
 text = "Absolute path"
 
-[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+[node name="ReadLast" type="Button" parent="VSplitContainer/HBoxContainer"]
 margin_left = 240.0
+margin_right = 334.0
+margin_bottom = 24.0
+text = "Read last file"
+
+[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+margin_left = 338.0
 margin_right = 1004.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

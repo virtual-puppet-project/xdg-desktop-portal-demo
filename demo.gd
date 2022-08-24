@@ -7,8 +7,11 @@ onready var output_control = $VSplitContainer/Output
 
 onready var env_path_button = $VSplitContainer/HBoxContainer/EnvPath
 onready var abs_path_button = $VSplitContainer/HBoxContainer/AbsPath
+onready var read_last_button = $VSplitContainer/HBoxContainer/ReadLast
 
 onready var status = $VSplitContainer/HBoxContainer/Status
+
+var file_path := ""
 
 #-----------------------------------------------------------------------------#
 # Builtin functions                                                           #
@@ -20,6 +23,7 @@ func _init() -> void:
 func _ready() -> void:
 	env_path_button.connect("pressed", self, "_env_pressed")
 	abs_path_button.connect("pressed", self, "_abs_pressed")
+	read_last_button.connect("pressed", self, "_read_last_pressed")
 	abs_path_button.hint_tooltip = ABS_PATH
 
 #-----------------------------------------------------------------------------#
@@ -31,6 +35,12 @@ func _env_pressed() -> void:
 
 func _abs_pressed() -> void:
 	_run_bin(ABS_PATH)
+
+func _read_last_pressed() -> void:
+	if file_path.empty():
+		output_control.text = "file_path is empty"
+		return
+	_read_file_to_output(file_path)
 
 #-----------------------------------------------------------------------------#
 # Private functions                                                           #
@@ -52,6 +62,8 @@ func _run_bin(arg: String) -> void:
 		break
 
 func _read_file_to_output(path: String) -> void:
+	file_path = path
+	
 	var file := File.new()
 	
 	var err := file.open(path, File.READ)
