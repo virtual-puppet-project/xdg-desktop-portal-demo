@@ -53,8 +53,14 @@ margin_right = 334.0
 margin_bottom = 24.0
 text = "Read last file"
 
-[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+[node name="Pwd" type="Button" parent="VSplitContainer/HBoxContainer"]
 margin_left = 338.0
+margin_right = 381.0
+margin_bottom = 24.0
+text = "PWD"
+
+[node name="Status" type="LineEdit" parent="VSplitContainer/HBoxContainer"]
+margin_left = 385.0
 margin_right = 1004.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

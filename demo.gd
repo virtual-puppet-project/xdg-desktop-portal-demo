@@ -21,9 +21,10 @@ func _init() -> void:
 	OS.center_window()
 
 func _ready() -> void:
-	env_path_button.connect("pressed", self, "_env_pressed")
-	abs_path_button.connect("pressed", self, "_abs_pressed")
-	read_last_button.connect("pressed", self, "_read_last_pressed")
+	$VSplitContainer/HBoxContainer/EnvPath.connect("pressed", self, "_env_pressed")
+	$VSplitContainer/HBoxContainer/AbsPath.connect("pressed", self, "_abs_pressed")
+	$VSplitContainer/HBoxContainer/ReadLast.connect("pressed", self, "_read_last_pressed")
+	$VSplitContainer/HBoxContainer/Pwd.connect("pressed", self, "_pwd_pressed")
 	abs_path_button.hint_tooltip = ABS_PATH
 
 #-----------------------------------------------------------------------------#
@@ -41,6 +42,20 @@ func _read_last_pressed() -> void:
 		output_control.text = "file_path is empty"
 		return
 	_read_file_to_output(file_path)
+
+func _pwd_pressed() -> void:
+	var output := []
+	var err: int = OS.execute("pwd", [], true, output)
+	
+	if err != 0:
+		output_control.text = "Unable to run pwd: %d" % err
+		return
+	
+	for i in output:
+		if i.empty():
+			continue
+		
+		output_control.text = i
 
 #-----------------------------------------------------------------------------#
 # Private functions                                                           #
